@@ -36,5 +36,10 @@ namespace PoeBossTracking.Windows
                 string responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine(responseBody);
         }
+
+        private void LogPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

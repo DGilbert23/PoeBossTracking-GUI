@@ -8,11 +8,11 @@
         Title="MainWindow" Height="450" Width="1000">
     <Grid>
         <DockPanel LastChildFill="True">
-            <Grid x:Name="gridDataEntryControls" Width="250" DockPanel.Dock="Left">
-                <TextBox Text="Enter Username" TextWrapping="Wrap" Margin="10,10,10,400"/>
+            <Grid x:Name="gridDataEntryControls" Width="250" DockPanel.Dock="Left" Visibility="Collapsed">
+                <TextBox x:Name="textBoxUsername" Text="Enter Username" TextWrapping="Wrap" Margin="10,10,10,400"/>
             </Grid>
             <Grid x:Name="gridDataEntry" Width="250" DockPanel.Dock="Right">
-                <local:LogPanel></local:LogPanel>
+                <local:LogPanel Loaded="LogPanel_Loaded"></local:LogPanel>
             </Grid>
             <Grid x:Name="gridDataViewControls" DockPanel.Dock="Bottom" Height="100"/>
             <DataGrid x:Name="dataGridDropsByBoss" DockPanel.Dock="Top"/>

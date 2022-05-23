@@ -22,5 +22,24 @@ namespace PoeBossTracking.Controls
         {
             InitializeComponent();
         }
+
+        private void buttonLogKill_Click(object sender, RoutedEventArgs e)
+        {
+            if (panelLogKill.Visibility == Visibility.Collapsed)
+            {
+                panelLogKill.Visibility = Visibility.Visible;
+                panelLogDrop.Visibility = Visibility.Collapsed;
+
+            }
+        }
+
+        private void buttonLogDrop_Click(object sender, RoutedEventArgs e)
+        {
+            if (panelLogDrop.Visibility == Visibility.Collapsed)
+            {
+                panelLogKill.Visibility = Visibility.Collapsed;
+                panelLogDrop.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using PoeBossTracking.Classes.dto;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,11 +18,11 @@ using System.Windows.Shapes;
 namespace PoeBossTracking.Controls
 {
     /// <summary>
-    /// Interaction logic for LogKill.xaml
+    /// Interaction logic for LogDrop.xaml
     /// </summary>
-    public partial class LogKill : UserControl
+    public partial class LogDrop : UserControl
     {
-        public LogKill()
+        public LogDrop()
         {
             InitializeComponent();
             try
@@ -32,18 +35,21 @@ namespace PoeBossTracking.Controls
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void comboBoxBoss_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (PoeBossTracking.Classes.DataControlHelper.LogNewKill(comboBoxBoss.SelectedValue.ToString(), textBoxUserName.Text, datePickerKillDate.SelectedDate.Value))
+            try
             {
-                labelLogError.Visibility = Visibility.Collapsed;
-                labelLogSuccess.Visibility = Visibility.Visible;
+                PoeBossTracking.Classes.DataControlHelper.PopulateItemsComboBox(comboBoxItemPool, ((Boss)comboBoxBoss.SelectedItem).bossName);
             }
-            else
+            catch (HttpRequestException exception)
             {
-                labelLogError.Visibility = Visibility.Visible;
-                labelLogSuccess.Visibility = Visibility.Collapsed;
+                //gracefully deal with inability to pull boss list. Should notify user of issue and close application.
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

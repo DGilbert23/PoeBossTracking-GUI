@@ -8,9 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="250">
     <Canvas>
         <Grid Height="380" Width="230" Canvas.Top="64" Canvas.Left="10">
-            <local:LogKill></local:LogKill>
+            <local:LogKill x:Name="panelLogKill" Visibility="Collapsed"></local:LogKill>
+            <local:LogDrop x:Name="panelLogDrop" Visibility="Collapsed"></local:LogDrop>
         </Grid>
-        <Button x:Name="buttonLogKill" Content="Log Kill" Height="49" Width="110" Canvas.Left="10" Canvas.Top="10"/>
-        <Button x:Name="buttonLogDrop" Content="Log Drop" Height="49" Width="110" Canvas.Left="130" Canvas.Top="10"/>
+        <Button x:Name="buttonLogKill" Content="Log Kill" Height="49" Width="110" Canvas.Left="10" Canvas.Top="10" Click="buttonLogKill_Click"/>
+        <Button x:Name="buttonLogDrop" Content="Log Drop" Height="49" Width="110" Canvas.Left="130" Canvas.Top="10" Click="buttonLogDrop_Click"/>
     </Canvas>
 </UserControl>
