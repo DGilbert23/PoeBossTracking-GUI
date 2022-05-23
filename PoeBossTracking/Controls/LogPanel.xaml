@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PoeBossTracking.Controls.LogPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoeBossTracking.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="250">
+    <Canvas>
+        <Grid Height="380" Width="230" Canvas.Top="64" Canvas.Left="10">
+            <local:LogKill></local:LogKill>
+        </Grid>
+        <Button x:Name="buttonLogKill" Content="Log Kill" Height="49" Width="110" Canvas.Left="10" Canvas.Top="10"/>
+        <Button x:Name="buttonLogDrop" Content="Log Drop" Height="49" Width="110" Canvas.Left="130" Canvas.Top="10"/>
+    </Canvas>
+</UserControl>
