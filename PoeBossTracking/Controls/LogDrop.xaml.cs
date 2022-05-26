@@ -40,16 +40,27 @@ namespace PoeBossTracking.Controls
             try
             {
                 PoeBossTracking.Classes.DataControlHelper.PopulateItemsComboBox(comboBoxItemPool, ((Boss)comboBoxBoss.SelectedItem).bossName);
+                PoeBossTracking.Classes.DataControlHelper.PopulateKillsComboBox(comboBoxKillDates, ((Boss)comboBoxBoss.SelectedItem).bossId, textBoxUserName.Text);
             }
             catch (HttpRequestException exception)
             {
                 //gracefully deal with inability to pull boss list. Should notify user of issue and close application.
+                throw exception;
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (PoeBossTracking.Classes.DataControlHelper.LogNewDrop(comboBoxKillDates.SelectedValue.ToString(), comboBoxItemPool.SelectedValue.ToString(), intUpDownItemValue.Value.ToString()))
+            {
+                labelLogError.Visibility = Visibility.Collapsed;
+                labelLogSuccess.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                labelLogError.Visibility = Visibility.Visible;
+                labelLogSuccess.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

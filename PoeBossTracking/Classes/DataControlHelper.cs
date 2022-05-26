@@ -21,6 +21,24 @@ namespace PoeBossTracking.Classes
             comboBox.SelectedValuePath = "bossId";
         }
 
+        public static async void PopulateItemsComboBox(ComboBox comboBox, string bossName)
+        {
+            List<Item> itemList = await endPointManager.GetAllDropsByBossName(bossName);
+
+            comboBox.ItemsSource = itemList;
+            comboBox.DisplayMemberPath = "itemName";
+            comboBox.SelectedValuePath = "itemId";
+        }
+
+        public static async void PopulateKillsComboBox(ComboBox comboBox, string bossId, string userName)
+        {
+            List<LoggedKill> killList = await endPointManager.GetAllKillsByBossUser(bossId, userName);
+
+            comboBox.ItemsSource = killList;
+            comboBox.DisplayMemberPath = "killDate";
+            comboBox.SelectedValuePath = "loggedKillId";
+        }
+
         public static bool LogNewKill(string bossId, string userName, DateTime selectedDate)
         {
             try
@@ -34,13 +52,17 @@ namespace PoeBossTracking.Classes
             }
         }
 
-        public static async void PopulateItemsComboBox(ComboBox comboBox, string bossName)
+        public static bool LogNewDrop(string loggedKillId, string itemId, string itemValue)
         {
-            List<Item> itemList = await endPointManager.GetAllDropsByBossName(bossName);
-
-            comboBox.ItemsSource = itemList;
-            comboBox.DisplayMemberPath = "itemName";
-            comboBox.SelectedValuePath = "itemId";
+            try
+            {
+                endPointManager.LogNewDropAsync(loggedKillId, itemId, itemValue);
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                return false;
+            }
         }
     }
 }

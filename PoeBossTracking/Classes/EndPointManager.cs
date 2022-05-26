@@ -47,16 +47,52 @@ namespace PoeBossTracking.Classes
                 throw e;
             }
         }
-
-
-        public async void LogNewKillAsync(string bossId, string userName, DateTime date)
+        
+        public async Task<List<LoggedKill>> GetAllKillsByBossUser(string bossId, string userName)
         {
             try
             {
-                LoggedKill newKill = new LoggedKill(null, bossId, userName, date);
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8080/drops/kill/list/" + bossId);
+                requestMessage.Headers.Add("appUserId", userName);
+                var response = await httpClient.SendAsync(requestMessage);
+
+                string jsonString = await response.Content.ReadAsStringAsync();
+                List<LoggedKill> killList = JsonSerializer.Deserialize<List<LoggedKill>>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                return killList;
+            }
+            catch (HttpRequestException e)
+            {
+                //Display error message somehow & handle gracefully
+                throw e;
+            }
+        }
+
+
+        public async void LogNewKillAsync(string bossId, string userId, DateTime date)
+        {
+            try
+            {
+                LoggedKill newKill = new LoggedKill(null, bossId, userId, date);
 
                 var stringContent = new StringContent(JsonSerializer.Serialize(newKill), Encoding.UTF8, "application/json");
                 var response = await httpClient.PostAsync("http://localhost:8080/drops/kill/log", stringContent);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException e)
+            {
+                //anything else?
+                throw e;
+            }
+        }
+
+        public async void LogNewDropAsync(string loggedKillId, string itemId, string itemValue)
+        {
+            try
+            {
+                LoggedDrop newDrop = new LoggedDrop(loggedKillId, itemId, itemValue);
+                
+                var stringContent = new StringContent(JsonSerializer.Serialize(newDrop), Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync("http://localhost:8080/drops/kill/log/drop", stringContent);
                 response.EnsureSuccessStatusCode();
             }
             catch (HttpRequestException e)

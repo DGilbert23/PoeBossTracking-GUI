@@ -8,14 +8,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="230">
     <Grid>
-        <ComboBox x:Name="comboBoxBoss" Margin="10,40,10,315" SelectionChanged="comboBoxBoss_SelectionChanged"/>
-        <Label Content="Boss" Margin="10,10,10,345" FontSize="14"/>
-        <ComboBox x:Name="comboBoxItemPool" Margin="10,169,10,186"/>
-        <Label Content="Item" Margin="10,139,10,216" FontSize="14"/>
-        <Label Content="Item Value (in Chaos)&#xD;&#xA;" Margin="10,199,10,151" FontSize="14"/>
-        <xctk:IntegerUpDown x:Name="intUpDownItemValue" Margin="10,234,10,121"></xctk:IntegerUpDown>
+        <ComboBox x:Name="comboBoxBoss" Margin="10,96,10,259" SelectionChanged="comboBoxBoss_SelectionChanged"/>
+        <Label Content="Boss" Margin="10,66,10,289" FontSize="14"/>
+        <ComboBox x:Name="comboBoxItemPool" Margin="10,221,10,134"/>
+        <Label Content="Item" Margin="10,191,10,164" FontSize="14"/>
+        <Label Content="Item Value (in Chaos)&#xD;&#xA;" Margin="10,251,10,99" FontSize="14"/>
+        <xctk:IntegerUpDown x:Name="intUpDownItemValue" Margin="10,286,10,69"></xctk:IntegerUpDown>
         <Button Content="Button" HorizontalAlignment="Center" Height="0" VerticalAlignment="Center" Width="0"/>
-        <ComboBox x:Name="comboBoxItemPool_Copy" Margin="10,105,10,250"/>
-        <Label Content="Date/Time of Kill" Margin="10,70,10,280" FontSize="14"/>
+        <ComboBox x:Name="comboBoxKillDates" Margin="10,161,10,194"/>
+        <Label Content="Date/Time of Kill" Margin="10,126,10,224" FontSize="14"/>
+        <Label Content="Username" Margin="10,10,10,345" FontSize="14"/>
+        <TextBox x:Name="textBoxUserName" TextWrapping="Wrap" Margin="10,39,10,319"/>
+        <Button x:Name="buttonSubmit" Content="Submit" Margin="10,325,10,31" Click="Button_Click"/>
+        <Label x:Name="labelLogError" Content="Error - Kill Not Logged" Margin="0,340,0,10" FontSize="16" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        <Label x:Name="labelLogSuccess" Content="Drop Logged Successfully!" Margin="0,340,0,0" FontSize="16" HorizontalAlignment="Center" Visibility="Collapsed"/>
     </Grid>
 </UserControl>
