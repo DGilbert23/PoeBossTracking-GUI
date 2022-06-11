@@ -16,11 +16,13 @@ namespace PoeBossTracking.Classes
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync("http://localhost:8080/boss/list/current");
+                HttpResponseMessage response = await httpClient.GetAsync("http://localhost:8080/boss/league");
                 response.EnsureSuccessStatusCode();
 
                 string jsonString = await response.Content.ReadAsStringAsync();
                 List<Boss> bossList = JsonSerializer.Deserialize<List<Boss>>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                bossList.Sort((x, y) => x.bossName.CompareTo(y.bossName));
+
                 return bossList;
             }
             catch (HttpRequestException e)
@@ -39,6 +41,7 @@ namespace PoeBossTracking.Classes
 
                 string jsonString = await response.Content.ReadAsStringAsync();
                 List<Item> itemList = JsonSerializer.Deserialize<List<Item>>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                itemList.Sort((x, y) => x.itemName.CompareTo(y.itemName));
                 return itemList;
             }
             catch (HttpRequestException e)
@@ -66,7 +69,6 @@ namespace PoeBossTracking.Classes
                 throw e;
             }
         }
-
 
         public async void LogNewKillAsync(string bossId, string userId, DateTime date)
         {
@@ -98,6 +100,28 @@ namespace PoeBossTracking.Classes
             catch (HttpRequestException e)
             {
                 //anything else?
+                throw e;
+            }
+        }
+
+        public async void LogKillAndDrops(string bossId, string userName, List<KillDrop> drops)
+        {
+            try
+            {
+                KillLog newKillLog = new KillLog(null, bossId, drops);
+
+                var requestMessage = new HttpRequestMessage(HttpMethod.Put, "http://localhost:8080/drops/kills");
+                requestMessage.Headers.Add("appUserId", userName);
+                var stringContent = new StringContent(JsonSerializer.Serialize(newKillLog), Encoding.UTF8, "application/json");
+                requestMessage.Content = stringContent;
+
+                var response = await httpClient.SendAsync(requestMessage);
+                response.EnsureSuccessStatusCode();
+
+            }
+            catch (HttpRequestException e)
+            {
+                //Display error message somehow & handle gracefully
                 throw e;
             }
         }

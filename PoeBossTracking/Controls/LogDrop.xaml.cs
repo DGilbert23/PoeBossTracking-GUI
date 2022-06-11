@@ -1,4 +1,5 @@
-﻿using PoeBossTracking.Classes.dto;
+﻿using PoeBossTracking.Classes;
+using PoeBossTracking.Classes.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace PoeBossTracking.Controls
             try
             {
                 PoeBossTracking.Classes.DataControlHelper.PopulateItemsComboBox(comboBoxItemPool, ((Boss)comboBoxBoss.SelectedItem).bossName);
-                PoeBossTracking.Classes.DataControlHelper.PopulateKillsComboBox(comboBoxKillDates, ((Boss)comboBoxBoss.SelectedItem).bossId, textBoxUserName.Text);
+                PoeBossTracking.Classes.DataControlHelper.PopulateKillsComboBox(comboBoxKillDates, ((Boss)comboBoxBoss.SelectedItem).bossId, GlobalVariables.Username);
             }
             catch (HttpRequestException exception)
             {

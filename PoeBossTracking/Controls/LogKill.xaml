@@ -7,14 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="230">
     <Grid>
-        <ComboBox x:Name="comboBoxBoss" Margin="10,96,10,259"/>
-        <Label Content="Boss" Margin="10,66,10,289" FontSize="14"/>
-        <DatePicker x:Name="datePickerKillDate" Margin="10,156,10,192" FontSize="14"/>
-        <Label Content="Kill Date" Margin="10,126,10,229" FontSize="14"/>
-        <Label Content="Timestamp will reflect time of submission" Margin="0,193,0,162" FontSize="8" HorizontalAlignment="Center"/>
+        <ComboBox x:Name="comboBoxBoss" Margin="10,40,10,315"/>
+        <Label Content="Boss" Margin="10,10,10,345" FontSize="14"/>
+        <DatePicker x:Name="datePickerKillDate" Margin="10,100,10,248" FontSize="14"/>
+        <Label Content="Kill Date" Margin="10,70,10,285" FontSize="14"/>
+        <Label Content="Timestamp will reflect time of submission" Margin="0,137,0,218" FontSize="8" HorizontalAlignment="Center"/>
         <Button Content="Submit" Margin="10,223,10,122" Click="Button_Click"/>
-        <Label Content="Username" Margin="10,10,10,346"/>
-        <TextBox x:Name="textBoxUserName" TextWrapping="Wrap" Margin="10,39,10,319"/>
         <Label x:Name="labelLogError" Content="Error - Kill Not Logged" Margin="0,263,0,77" FontSize="20" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <Label x:Name="labelLogSuccess" Content="Kill Logged Successfully!" Margin="0,263,0,77" FontSize="20" HorizontalAlignment="Center" Visibility="Collapsed"/>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoeBossTracking.Classes;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -34,7 +35,7 @@ namespace PoeBossTracking.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PoeBossTracking.Classes.DataControlHelper.LogNewKill(comboBoxBoss.SelectedValue.ToString(), textBoxUserName.Text, datePickerKillDate.SelectedDate.Value))
+            if (PoeBossTracking.Classes.DataControlHelper.LogNewKill(comboBoxBoss.SelectedValue.ToString(), GlobalVariables.Username, datePickerKillDate.SelectedDate.Value))
             {
                 labelLogError.Visibility = Visibility.Collapsed;
                 labelLogSuccess.Visibility = Visibility.Visible;

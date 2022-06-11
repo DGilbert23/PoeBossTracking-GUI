@@ -41,5 +41,13 @@ namespace PoeBossTracking.Windows
         {
 
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            this.Hide();
+            login.ShowDialog();
+            this.Show();
+        }
     }
 }

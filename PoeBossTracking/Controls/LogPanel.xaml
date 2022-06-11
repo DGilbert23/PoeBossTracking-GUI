@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="250">
     <Canvas>
         <Grid Height="380" Width="230" Canvas.Top="64" Canvas.Left="10">
+            <local:LogKillAndDrops x:Name="panelLogKillsAndDrops" Visibility="Visible"></local:LogKillAndDrops>
             <local:LogKill x:Name="panelLogKill" Visibility="Collapsed"></local:LogKill>
             <local:LogDrop x:Name="panelLogDrop" Visibility="Collapsed"></local:LogDrop>
         </Grid>

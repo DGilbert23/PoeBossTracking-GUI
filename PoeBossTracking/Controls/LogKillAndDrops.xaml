@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="PoeBossTracking.Controls.LogKillAndDrops"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoeBossTracking.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="550">
+    <Grid>
+        <ComboBox x:Name="comboBoxBoss" Margin="80,10,50,415" SelectionChanged="comboBoxBoss_SelectionChanged" Height="25"/>
+        <Label Content="Boss" Margin="10,10,475,0" FontSize="14" Height="25" VerticalAlignment="Top"/>
+        <ScrollViewer Margin="25,81,25,50">
+            <Grid x:Name="scrollGrid">
+
+            </Grid>
+        </ScrollViewer>
+        <Button Content="Submit" Margin="10,410,10,10" Height="30" Width="450" Click="buttonSubmit_Click"/>
+        <Label Content="Value (Chaos)" Margin="396,44,0,374" HorizontalAlignment="Left"/>
+        <Label Content="Quantity" Margin="319,44,0,374" HorizontalAlignment="Left"/>
+
+    </Grid>
+</UserControl>

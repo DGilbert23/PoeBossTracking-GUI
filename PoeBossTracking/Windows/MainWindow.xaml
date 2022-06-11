@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoeBossTracking.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="300">
+        Title="MainWindow" Height="500" Width="550" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
         <!-- Title="MainWindow" Height="450" Width="1000">-->
     <Grid>
         <DockPanel LastChildFill="True">
-            <!--
+
             <Grid x:Name="gridDataEntryControls" Width="250" DockPanel.Dock="Left" Visibility="Collapsed">
-                <TextBox x:Name="textBoxUsername" Text="Enter Username" TextWrapping="Wrap" Margin="10,10,10,400"/>
+                
             </Grid>
-            -->
-            <Grid x:Name="gridDataEntry" Width="250" DockPanel.Dock="Right">
-                <local:LogPanel Loaded="LogPanel_Loaded"></local:LogPanel>
+
+            <Grid x:Name="gridDataEntry" DockPanel.Dock="Right">
+                <!--<local:LogPanel Loaded="LogPanel_Loaded"></local:LogPanel>-->
+                <local:LogKillAndDrops></local:LogKillAndDrops>
             </Grid>
-            <!--
+
             <Grid x:Name="gridDataViewControls" DockPanel.Dock="Bottom" Height="100" Visibility="Collapsed"/>
             <DataGrid x:Name="dataGridDropsByBoss" DockPanel.Dock="Top" Visibility="Collapsed"/>
-            -->
         </DockPanel>
     </Grid>
 </Window>
