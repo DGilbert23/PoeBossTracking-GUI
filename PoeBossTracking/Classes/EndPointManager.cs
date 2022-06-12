@@ -16,7 +16,7 @@ namespace PoeBossTracking.Classes
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync("http://localhost:8080/boss/league");
+                HttpResponseMessage response = await httpClient.GetAsync(GlobalVariables.ApiUrl + "boss/league");
                 response.EnsureSuccessStatusCode();
 
                 string jsonString = await response.Content.ReadAsStringAsync();
@@ -36,7 +36,7 @@ namespace PoeBossTracking.Classes
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync("http://localhost:8080/boss/" + bossName);
+                HttpResponseMessage response = await httpClient.GetAsync(GlobalVariables.ApiUrl + "boss/" + bossName);
                 response.EnsureSuccessStatusCode();
 
                 string jsonString = await response.Content.ReadAsStringAsync();
@@ -55,7 +55,7 @@ namespace PoeBossTracking.Classes
         {
             try
             {
-                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8080/drops/kill/list/" + bossId);
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, GlobalVariables.ApiUrl + "drops/kill/list/" + bossId);
                 requestMessage.Headers.Add("appUserId", userName);
                 var response = await httpClient.SendAsync(requestMessage);
 
@@ -110,7 +110,7 @@ namespace PoeBossTracking.Classes
             {
                 KillLog newKillLog = new KillLog(null, bossId, drops);
 
-                var requestMessage = new HttpRequestMessage(HttpMethod.Put, "http://localhost:8080/drops/kills");
+                var requestMessage = new HttpRequestMessage(HttpMethod.Put, GlobalVariables.ApiUrl + "drops/kills");
                 requestMessage.Headers.Add("appUserId", userName);
                 var stringContent = new StringContent(JsonSerializer.Serialize(newKillLog), Encoding.UTF8, "application/json");
                 requestMessage.Content = stringContent;

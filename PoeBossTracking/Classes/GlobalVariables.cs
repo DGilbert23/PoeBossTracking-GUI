@@ -10,5 +10,7 @@ namespace PoeBossTracking.Classes
     {
         private static string username;
         public static string Username { get { return username; } set { username = value; } }
+        private const string apiURL = "http://localhost:8080/";
+        public static string ApiUrl { get { return apiURL; } }
     }
 }
