@@ -22,9 +22,9 @@ namespace PoeBossTracking.Classes
             comboBox.SelectedValuePath = "bossId";
         }
 
-        public static async void PopulateItemsComboBox(ComboBox comboBox, string bossName)
+        public static async void PopulateItemsComboBox(ComboBox comboBox, string bossId)
         {
-            List<Item> itemList = await endPointManager.GetAllDropsByBossName(bossName);
+            List<Item> itemList = await endPointManager.GetAllDropsByBossId(bossId);
 
             comboBox.ItemsSource = itemList;
             comboBox.DisplayMemberPath = "itemName";
@@ -42,7 +42,7 @@ namespace PoeBossTracking.Classes
 
         public static async void PopulateDropListGrid(Grid grid, string bossId)
         {
-            List<Item> itemList = await endPointManager.GetAllDropsByBossName(bossId);
+            List<Item> itemList = await endPointManager.GetAllDropsByBossId(bossId);
 
             int counter = 0;
             StackPanel stackPanel = new StackPanel { Orientation = Orientation.Vertical };
@@ -71,7 +71,7 @@ namespace PoeBossTracking.Classes
             }
         }
 
-        public static bool LogNewKill(string bossId, string userName, DateTime selectedDate)
+        /*public static bool LogNewKill(string bossId, string userName, DateTime selectedDate)
         {
             try
             {
@@ -82,9 +82,9 @@ namespace PoeBossTracking.Classes
             {
                 return false;
             }
-        }
+        }*/
 
-        public static bool LogNewDrop(string loggedKillId, string itemId, string itemValue)
+        /*public static bool LogNewDrop(string loggedKillId, string itemId, string itemValue)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace PoeBossTracking.Classes
             {
                 return false;
             }
-        }
+        }*/
 
         public static List<KillDrop> BuildDropsList(UIElementCollection uiCollection)
         {

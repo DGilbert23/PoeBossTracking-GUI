@@ -32,7 +32,7 @@ namespace PoeBossTracking.Classes
             }
         }
 
-        public async Task<List<Item>> GetAllDropsByBossName(string bossName)
+        public async Task<List<Item>> GetAllDropsByBossId(string bossName)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace PoeBossTracking.Classes
             }
         }
 
-        public async void LogNewKillAsync(string bossId, string userId, DateTime date)
+        /*public async void LogNewKillAsync(string bossId, string userId, DateTime date)
         {
             try
             {
@@ -85,9 +85,9 @@ namespace PoeBossTracking.Classes
                 //anything else?
                 throw e;
             }
-        }
+        }*/
 
-        public async void LogNewDropAsync(string loggedKillId, string itemId, string itemValue)
+        /*public async void LogNewDropAsync(string loggedKillId, string itemId, string itemValue)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace PoeBossTracking.Classes
                 //anything else?
                 throw e;
             }
-        }
+        }*/
 
         public async void LogKillAndDrops(string bossId, string userName, List<KillDrop> drops)
         {

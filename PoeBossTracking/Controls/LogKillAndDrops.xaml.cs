@@ -39,7 +39,7 @@ namespace PoeBossTracking.Controls
         private void comboBoxBoss_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             scrollGrid.Children.Clear();
-            DataControlHelper.PopulateDropListGrid(scrollGrid, ((Boss)(comboBoxBoss.SelectedItem)).bossName);
+            DataControlHelper.PopulateDropListGrid(scrollGrid, comboBoxBoss.SelectedValue.ToString());
         }
 
         private void buttonSubmit_Click(object sender, RoutedEventArgs e)

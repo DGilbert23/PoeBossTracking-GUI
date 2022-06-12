@@ -35,7 +35,7 @@ namespace PoeBossTracking.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PoeBossTracking.Classes.DataControlHelper.LogNewKill(comboBoxBoss.SelectedValue.ToString(), GlobalVariables.Username, datePickerKillDate.SelectedDate.Value))
+            /*if (PoeBossTracking.Classes.DataControlHelper.LogNewKill(comboBoxBoss.SelectedValue.ToString(), GlobalVariables.Username, datePickerKillDate.SelectedDate.Value))
             {
                 labelLogError.Visibility = Visibility.Collapsed;
                 labelLogSuccess.Visibility = Visibility.Visible;
@@ -45,6 +45,7 @@ namespace PoeBossTracking.Controls
                 labelLogError.Visibility = Visibility.Visible;
                 labelLogSuccess.Visibility = Visibility.Collapsed;
             }
+            */
         }
     }
 }

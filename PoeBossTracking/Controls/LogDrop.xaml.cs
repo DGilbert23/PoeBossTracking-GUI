@@ -40,8 +40,8 @@ namespace PoeBossTracking.Controls
         {
             try
             {
-                PoeBossTracking.Classes.DataControlHelper.PopulateItemsComboBox(comboBoxItemPool, ((Boss)comboBoxBoss.SelectedItem).bossName);
-                PoeBossTracking.Classes.DataControlHelper.PopulateKillsComboBox(comboBoxKillDates, ((Boss)comboBoxBoss.SelectedItem).bossId, GlobalVariables.Username);
+                PoeBossTracking.Classes.DataControlHelper.PopulateItemsComboBox(comboBoxItemPool, comboBoxBoss.SelectedValue.ToString());
+                PoeBossTracking.Classes.DataControlHelper.PopulateKillsComboBox(comboBoxKillDates, comboBoxBoss.SelectedValue.ToString(), GlobalVariables.Username);
             }
             catch (HttpRequestException exception)
             {
@@ -52,7 +52,7 @@ namespace PoeBossTracking.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PoeBossTracking.Classes.DataControlHelper.LogNewDrop(comboBoxKillDates.SelectedValue.ToString(), comboBoxItemPool.SelectedValue.ToString(), intUpDownItemValue.Value.ToString()))
+            /*if (PoeBossTracking.Classes.DataControlHelper.LogNewDrop(comboBoxKillDates.SelectedValue.ToString(), comboBoxItemPool.SelectedValue.ToString(), intUpDownItemValue.Value.ToString()))
             {
                 labelLogError.Visibility = Visibility.Collapsed;
                 labelLogSuccess.Visibility = Visibility.Visible;
@@ -61,7 +61,7 @@ namespace PoeBossTracking.Controls
             {
                 labelLogError.Visibility = Visibility.Visible;
                 labelLogSuccess.Visibility = Visibility.Collapsed;
-            }
+            }*/
         }
     }
 }
